@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <section class="min-h-screen flex justify-center items-center bg-gray-50">
+    <div class="w-full max-w-md">
+      {# ✅ Flash messages like toasts #}
+      {% for label, messages in app.flashes %}
+        {% for message in messages %}
+          <div class="mb-4 p-3 rounded-lg text-white
+                      {% if label == 'success' %} bg-green-600 {% elseif label == 'error' %} bg-red-600 {% endif %}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endfor %}
+
+      {% include 'components/login/form.html.twig' with { email: email, errors: errors } %}
+    </div>
+  </section>
+{% endblock %}

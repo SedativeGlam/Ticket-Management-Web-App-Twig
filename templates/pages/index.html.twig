@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Tailwind Test
+{% endblock %}
+
+{% block body %}
+  <article className="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark antialiased">
+    <section className="max-w-[1440px] mx-auto overflow-x-hidden">
+      {% include 'components/home/header.html.twig' %}
+      {% include 'components/home/herosection.html.twig' %}
+    </section>
+  </article>
+{% endblock %}

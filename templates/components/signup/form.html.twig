@@ -1,0 +1,48 @@
+{% set formData = formData|default({}) %}
+{% set errors = errors|default({}) %}
+
+<form action="{{ path('app_signup') }}" method="post" class="space-y-4">
+    <div class="flex flex-col">
+        <label for="username" class="text-slate-800 dark:text-slate-200 text-sm font-bold pb-2">Username</label>
+        <input type="text" id="username" name="username" value="{{ formData.username|default('') }}"
+               class="w-full rounded-lg border {% if errors.username is defined %}border-red-500{% else %}border-slate-300 dark:border-slate-700{% endif %} bg-white dark:bg-slate-900 p-3 text-base text-slate-800 dark:text-slate-200 focus:outline-0 focus:ring-2 focus:ring-indigo-500"
+               placeholder="e.g., john.doe">
+        {% if errors.username is defined %}
+            <span class="text-sm text-red-500 pt-1">{{ errors.username }}</span>
+        {% endif %}
+    </div>
+
+    <div class="flex flex-col">
+        <label for="email" class="text-slate-800 dark:text-slate-200 text-sm font-bold pb-2">Email</label>
+        <input type="email" id="email" name="email" value="{{ formData.email|default('') }}"
+               class="w-full rounded-lg border {% if errors.email is defined %}border-red-500{% else %}border-slate-300 dark:border-slate-700{% endif %} bg-white dark:bg-slate-900 p-3 text-base text-slate-800 dark:text-slate-200 focus:outline-0 focus:ring-2 focus:ring-indigo-500"
+               placeholder="Enter your email">
+        {% if errors.email is defined %}
+            <span class="text-sm text-red-500 pt-1">{{ errors.email }}</span>
+        {% endif %}
+    </div>
+
+    <div class="flex flex-col">
+        <label for="password" class="text-slate-800 dark:text-slate-200 text-sm font-bold pb-2">Password</label>
+        <input type="password" id="password" name="password" value="{{ formData.password|default('') }}"
+               class="w-full rounded-lg border {% if errors.password is defined %}border-red-500{% else %}border-slate-300 dark:border-slate-700{% endif %} bg-white dark:bg-slate-900 p-3 text-base text-slate-800 dark:text-slate-200 focus:outline-0 focus:ring-2 focus:ring-indigo-500"
+               placeholder="Create a strong password">
+        {% if errors.password is defined %}
+            <span class="text-sm text-red-500 pt-1">{{ errors.password }}</span>
+        {% endif %}
+    </div>
+
+    <div class="flex flex-col">
+        <label for="confirmPassword" class="text-slate-800 dark:text-slate-200 text-sm font-bold pb-2">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" value="{{ formData.confirmPassword|default('') }}"
+               class="w-full rounded-lg border {% if errors.confirmPassword is defined %}border-red-500{% else %}border-slate-300 dark:border-slate-700{% endif %} bg-white dark:bg-slate-900 p-3 text-base text-slate-800 dark:text-slate-200 focus:outline-0 focus:ring-2 focus:ring-indigo-500"
+               placeholder="Re-enter your password">
+        {% if errors.confirmPassword is defined %}
+            <span class="text-sm text-red-500 pt-1">{{ errors.confirmPassword }}</span>
+        {% endif %}
+    </div>
+
+    <button type="submit" class="w-full h-12 flex items-center justify-center gap-2 rounded-lg bg-[#4F46E5] px-6 mt-6 text-base font-semibold text-white hover:bg-indigo-600 transition-colors">
+        Create Account
+    </button>
+</form>
